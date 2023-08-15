@@ -9,9 +9,9 @@ artifacts:
     - stackoverflow
 stages:
   train:
-    cmd: python src/train.py data/features model.pkl
+    cmd: python src/train.py ../prepare/data/features model.pkl
     deps:
-    - data/features
+    - ../prepare/data/features
     - src/train.py
     params:
     - train.min_split
@@ -20,9 +20,9 @@ stages:
     outs:
     - model.pkl
   evaluate:
-    cmd: python src/evaluate.py model.pkl data/features
+    cmd: python src/evaluate.py model.pkl ../prepare/data/features
     deps:
-    - data/features
+    - ../prepare/data/features
     - model.pkl
     - src/evaluate.py
     outs:
